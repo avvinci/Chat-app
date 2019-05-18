@@ -17,16 +17,20 @@
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
     <script>
+        var username = prompt("Enter your username?");
         $(function(){
             var socket = io();
             $('form').submit(function(e){
                 e.preventDefault();
-                socket.emit('chat message', $('#m').val() );
+                socket.emit('chat message', { val: $('#m').val() , id: username } );
                 $('#m').val('');
                 return false; 
             });
             socket.on('chat message' , function(msg){
-                $('#messages').append($('<li>').text(msg));
+                $('#messages').append($('<li>').text( msg.id + ': ' + msg.val));
+            });
+            socket.on('disconnected' , function(msg){
+                $('#messages').append($('<li>').text(username + ': ' +msg));
             });
         });
     </script>
