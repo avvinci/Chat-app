@@ -1,11 +1,16 @@
-var app = require('express')();
+var express = require('express')
+let app = express();
+var path = require('path');
 var http = require('http').createServer(app);
 var io = require('socket.io')(http) ; 
 
 
-app.get('/', function(req,res){
-    res.sendFile(__dirname + '/index.html');
-});
+// app.get('/', function(req,res){
+//     res.sendFile(__dirname + '/index.html');
+// });
+
+
+app.use(express.static(path.join(__dirname, 'public'))); 
 
 io.on('connection',function(socket){
     let name = "anonymous" ; 
