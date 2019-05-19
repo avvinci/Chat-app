@@ -8,15 +8,16 @@ app.get('/', function(req,res){
 });
 
 io.on('connection',function(socket){
-    let name = "" ; 
+    let name = "anonymous" ; 
     console.log('user connected') ; 
-    
+
     socket.on('chat message', function(msg){
     console.log('chat by : '+ msg.id) ; 
     io.emit('chat message', msg);
     });
 
     socket.on('new user', function(msg){
+        io.emit('new user', msg) ; 
         name  = msg ; 
     });
 
