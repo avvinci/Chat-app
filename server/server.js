@@ -9,10 +9,10 @@ app.get('/', function(req,res){
 
 io.on('connection',function(socket){
     let name = "anonymous" ; 
-    console.log('user connected') ; 
+    // console.log('user connected') ; 
 
     socket.on('chat message', function(msg){
-    console.log('chat by : '+ msg.id) ; 
+    // console.log('chat by : '+ msg.id) ; 
     io.emit('chat message', msg);
     });
 
@@ -23,7 +23,7 @@ io.on('connection',function(socket){
 
     socket.on('disconnect', function(){
         io.emit('disconnected', name + ' has disconnected');
-        console.log('user disconnnected') ;
+        // console.log('user disconnnected') ;
     });
 
 });

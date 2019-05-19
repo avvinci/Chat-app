@@ -2,14 +2,14 @@
 <html>
     <!-- <link rel="stylesheet" href="styles.css" /> -->
   <head>
-    <title>Socket.IO chat</title>
+    <title>Socket.IO Chat-app</title>
     <style>
       * { margin: 0; padding: 0; box-sizing: border-box; }
       body { font: 13px Helvetica, Arial; }
       #uf { background: #000; padding: 3px;  position: fixed; bottom: 0px; width: 100%; }
       form { background: #000; padding: 3px; position: fixed; bottom: 80px ; width: 100%; }
       form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
-      form button { width: 9%; background: #075cf8; border: none; padding: 10px; }
+      form button { width: 9%; background: blueviolet; border: none; padding: 10px; }
       #online-users { list-style-type: none; margin: 0; padding: 0; }
       #online-users li { padding: 5px 10px; color: blueviolet ; }
       #messages { list-style-type: none; margin: 0; padding: 0;   }
@@ -19,45 +19,47 @@
   </head>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://code.jquery.com/jquery-1.11.1.js"></script>
-    <script>
-        // $(function(){
-
-        // });
-
+    <script > 
+    
         $(function(){
 
-            var socket = io();
-            var username = "anonymous" ; 
-            // prompt("Enter your username?");
+    var socket = io();
+    var username = "anonymous" ; 
+    // prompt("Enter your username?");
 
-            $('#uf').submit(function(e){
-                e.preventDefault();
-                username = $('#u').val() ; 
-                socket.emit('new user', username );
-                $('#u').val('');
-                return false; 
-            });
-           
-            $('#mform').submit(function(e){
-                e.preventDefault();
-                socket.emit('chat message', { val: $('#m').val() , id: username } );
-                $('#m').val('');
-                return false; 
-            });
+    $('#uf').submit(function(e){
+        e.preventDefault();
+        let temp = $('#u').val() ; 
+        if(temp === "" || username !== "anonymous") {
+          $('#u').val('');
+          return false ;
+        }
+        username = temp ; 
+        socket.emit('new user', username );
+        $('#u').val('');
+        return false; 
+    });
 
-            socket.on('new user' , function(msg){
-              $('#online-users').append( $('<li>').text(msg + ' is online')) ; 
-            });
-     
-            socket.on('chat message' , function(msg){
-                $('#messages').append($('<li>').text( msg.id + ': ' + msg.val));
-            });
-            
-            socket.on('disconnected' , function(msg){
-                $('#messages').append($('<li>').text(   msg));
-            });
+    $('#mform').submit(function(e){
+        e.preventDefault();
+        socket.emit('chat message', { val: $('#m').val() , id: username } );
+        $('#m').val('');
+        return false; 
+    });
 
-        });
+    socket.on('new user' , function(msg){
+      $('#online-users').append( $('<li>').text(msg + ' is online')) ; 
+    });
+
+    socket.on('chat message' , function(msg){
+        $('#messages').append($('<li>').text( msg.id + ': ' + msg.val));
+    });
+
+    socket.on('disconnected' , function(msg){
+        $('#messages').append($('<li>').text(   msg));
+    });
+
+    });
 
     </script>
 
