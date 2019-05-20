@@ -9,7 +9,7 @@ $(function(){
 
     var $window = $(window);
     var $messages = $('.messages'); // Messages area
-    var $inputMessage = $('.inputMessage'); // Input message input box
+    var $inputMessage = $('#m'); // Input message input box
     var $chatPage = $('.chat.page'); // The chatroom page
   
     // Prompt for setting a username
@@ -28,6 +28,8 @@ $(function(){
         let temp = $usernameInput.val() ; 
         if(temp === "" || username !== "anonymous") {
             $usernameInput.val('');
+            socket.emit('chat message', { val: $('#m').val() , id: username } );
+            $('#m').val('');
             return false ;
         }
 
@@ -37,6 +39,7 @@ $(function(){
         $loginPage.off('click');
         socket.emit('new user', username );
         $usernameInput.val('');
+        $currentInput = $inputMessage.focus();
         return false; 
     });
 
@@ -44,6 +47,7 @@ $(function(){
         e.preventDefault();
         socket.emit('chat message', { val: $('#m').val() , id: username } );
         $('#m').val('');
+        $currentInput = $inputMessage.focus();
         return false; 
     });
 

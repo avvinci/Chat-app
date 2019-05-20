@@ -9,9 +9,9 @@ form button { width: 14%; background: rgba(0, 0, 255, 0.568); border: none; padd
   padding-right: 15px;
   text-align: right; 
 }
-#online-users li { padding: 5px 10px; color: yellowgreen ; }
+#online-users li { padding: 5px 10px; color: teal ; }
 #messages { list-style-type: none; margin: 0;  overflow-y: scroll;
-    padding: 10px 20px 10px 20px;  }
+    padding: 10px 20px 10px 20px;  color: teal }
 #messages li { padding: 5px 10px; }
 #messages li:nth-child(odd) { background: #eee; }
 
