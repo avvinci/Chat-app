@@ -4,6 +4,8 @@ $(function(){
     var socket = io();
     var username = "anonymous" ; 
     // prompt("Enter your username?");
+    var $usernameInput = $('.usernameInput');
+    var $loginPage = $('.login.page'); 
 
     $('#uf').submit(function(e){
         e.preventDefault();
@@ -18,10 +20,13 @@ $(function(){
         return false; 
     });
 
-    $('#mform').submit(function(e){
+    $usernameInput.submit(function(e){
         e.preventDefault();
         socket.emit('chat message', { val: $('#m').val() , id: username } );
-        $('#m').val('');
+        $loginPage.fadeOut();
+        // $chatPage.show();
+        $loginPage.off('click');
+        $usernameInput.val('');
         return false; 
     });
 
