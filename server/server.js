@@ -13,7 +13,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 io.on('connection',function(socket){
     let name = "anonymous" ; 
-    // console.log('user connected') ; 
+    console.log('user connected') ; 
 
     socket.on('chat message', function(msg){
     // console.log('chat by : '+ msg.id) ; 
@@ -22,6 +22,7 @@ io.on('connection',function(socket){
 
     socket.on('new user', function(msg){
         io.emit('new user', msg) ; 
+        console.log('user ::' , msg ) ; 
         name  = msg ; 
     });
 

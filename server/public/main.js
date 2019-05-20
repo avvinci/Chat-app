@@ -7,26 +7,43 @@ $(function(){
     var $usernameInput = $('.usernameInput');
     var $loginPage = $('.login.page'); 
 
-    $('#uf').submit(function(e){
-        e.preventDefault();
-        let temp = $('#u').val() ; 
+    var $window = $(window);
+    var $messages = $('.messages'); // Messages area
+    var $inputMessage = $('.inputMessage'); // Input message input box
+    var $chatPage = $('.chat.page'); // The chatroom page
+  
+    // Prompt for setting a username
+    var username;
+    var connected = false;
+    var typing = false;
+    var lastTypingTime;
+    var $currentInput = $usernameInput.focus();
+
+
+
+    $window.keydown(event => {
+        if (event.which !== 13){
+            return; 
+        } 
+        let temp = $usernameInput.val() ; 
         if(temp === "" || username !== "anonymous") {
-            $('#u').val('');
+            $usernameInput.val('');
             return false ;
         }
+
         username = temp ; 
+        $loginPage.fadeOut();
+        $chatPage.show();
+        $loginPage.off('click');
         socket.emit('new user', username );
-        $('#u').val('');
+        $usernameInput.val('');
         return false; 
     });
 
-    $usernameInput.submit(function(e){
+    $('#mform').submit(function(e){
         e.preventDefault();
         socket.emit('chat message', { val: $('#m').val() , id: username } );
-        $loginPage.fadeOut();
-        // $chatPage.show();
-        $loginPage.off('click');
-        $usernameInput.val('');
+        $('#m').val('');
         return false; 
     });
 

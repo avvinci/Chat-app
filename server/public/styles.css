@@ -1,6 +1,4 @@
-/* * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font: 13px Helvetica, Arial; }
-#uf { background: #000; padding: 3px;  position: fixed; bottom: 0px; width: 100%; }
+
 form { background: #000; padding: 3px; position: fixed; bottom: 80px ; width: 100%; }
 form input { border: 0; padding: 10px; width: 90%; margin-right: .5%; }
 form button { width: 9%; background: blueviolet; border: none; padding: 10px; }
@@ -8,7 +6,7 @@ form button { width: 9%; background: blueviolet; border: none; padding: 10px; }
 #online-users li { padding: 5px 10px; color: blueviolet ; }
 #messages { list-style-type: none; margin: 0; padding: 0;   }
 #messages li { padding: 5px 10px; }
-#messages li:nth-child(odd) { background: #eee; } */
+#messages li:nth-child(odd) { background: #eee; }
 
 * {
     box-sizing: border-box;
@@ -87,3 +85,6 @@ form button { width: 9%; background: blueviolet; border: none; padding: 10px; }
     font-weight: 100;
   }
   
+  .chat.page {
+    display: none;
+  }
