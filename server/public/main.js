@@ -59,7 +59,11 @@ $(function(){
     });
 
     socket.on('disconnected' , function(msg){
-        $('#messages').append($('<li>').text(   msg));
+        $('#messages').append($('<li>').text(msg));
+    });
+
+    socket.on('new user hello', function(msg){
+        $('#messages').append($('<li>').text(msg));
     });
 
 });
