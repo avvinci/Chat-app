@@ -102,3 +102,45 @@ form button { width: 8%; background: rgba(0, 0, 255, 0.568); border: none; paddi
     position: fixed; bottom: 70px ;
   }
   
+  #messages #lines {
+    height: 250px;
+    border-top: 1px solid #ddd;
+    background: #fff;
+    overflow: auto;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+
+  #messages #lines::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  #messages #lines::-webkit-scrollbar-button:start:decrement,
+  #messages #lines ::-webkit-scrollbar-button:end:increment {
+    display: block;
+    height: 10px;
+  }
+  #messages #lines::-webkit-scrollbar-button:vertical:increment {
+    background-color: #fff;
+  }
+  #messages #lines::-webkit-scrollbar-track-piece {
+    background-color: #fff;
+    -webkit-border-radius: 3px;
+  }
+  #messages #lines::-webkit-scrollbar-thumb:vertical {
+    height: 50px;
+    background-color: #ccc;
+    -webkit-border-radius: 3px;
+  }
+  #messages #lines::-webkit-scrollbar-thumb:horizontal {
+    width: 50px;
+    background-color: #fff;
+    -webkit-border-radius: 3px;
+  }
+
+  .thumb {
+    height: 145px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+    position: relative;
+  }

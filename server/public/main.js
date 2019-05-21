@@ -72,7 +72,7 @@ $(function(){
         var data = e.originalEvent.target.files[0];
         var reader = new FileReader();
         reader.onload = function(evt){
-          image('me', evt.target.result);
+          image('me: ', evt.target.result);
           socket.emit('user image', evt.target.result);
         };
         reader.readAsDataURL(data);
@@ -83,5 +83,5 @@ $(function(){
 
 
 function image (from, base64Image) {
-    $('#messages').append($('<p>').append($('<b>').text(from), '<img src="' + base64Image + '"/>'));
+    $('#messages').append($('<p>').append($('<b>').text(from), '<img class="thumb" src="' + base64Image + '"/>'));
   }

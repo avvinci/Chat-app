@@ -39,7 +39,7 @@ io.on('connection',function(socket){
 
     socket.on('user image', function(data){
         // console.log(data) ; 
-        io.emit('user image', name + ': ' , data); 
+        socket.broadcast.emit('user image', name + ': ' , data); 
     });
 
 });
