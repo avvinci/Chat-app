@@ -37,16 +37,21 @@ io.on('connection',function(socket){
         // console.log('user disconnnected') ;
     });
 
+    socket.on('user image', function(data){
+        // console.log(data) ; 
+        io.emit('user image', name + ': ' , data); 
+    });
+
 });
 
-const hidden = io.of('/hidden') ; 
+// const hidden = io.of('/hidden') ; 
 
-hidden.on('connection', function(socket){
-    console.log('someone connected to hidden') ; 
+// hidden.on('connection', function(socket){
+//     console.log('someone connected to hidden') ; 
    
-});
+// });
 
-hidden.emit('hi', 'everyone!')  ; 
+// hidden.emit('hi', 'everyone!')  ; 
 
 
 http.listen(3000,function(){

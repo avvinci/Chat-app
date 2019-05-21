@@ -66,4 +66,22 @@ $(function(){
         $('#messages').append($('<li>').text(msg));
     });
 
+    socket.on('user image', image);
+
+    $('#imagefile').bind('change', function(e){
+        var data = e.originalEvent.target.files[0];
+        var reader = new FileReader();
+        reader.onload = function(evt){
+          image('me', evt.target.result);
+          socket.emit('user image', evt.target.result);
+        };
+        reader.readAsDataURL(data);
+        
+      });
+
 });
+
+
+function image (from, base64Image) {
+    $('#messages').append($('<p>').append($('<b>').text(from), '<img src="' + base64Image + '"/>'));
+  }
