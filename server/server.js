@@ -12,12 +12,11 @@ var io = require('socket.io')(http) ;
 app.use(express.static(path.join(__dirname, 'public'))); 
 
 
-
 io.on('connection',function(socket){
 
     let name = "anonymous" ; 
-    console.log('user connected') ; 
-    console.log(socket.id)  ;
+    // console.log('user connected') ; 
+    // console.log(socket.id)  ;
 
 
     socket.on('chat message', function(msg){
@@ -45,12 +44,10 @@ io.on('connection',function(socket){
 });
 
 // const hidden = io.of('/hidden') ; 
-
 // hidden.on('connection', function(socket){
 //     console.log('someone connected to hidden') ; 
    
 // });
-
 // hidden.emit('hi', 'everyone!')  ; 
 
 
