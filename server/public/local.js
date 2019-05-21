@@ -1,7 +1,7 @@
 
 $(function(){
 
-    var socket = io();
+    var socket = io('/hidden');
     var username = "anonymous" ; 
     var $usernameInput = $('.usernameInput');
     var $loginPage = $('.login.page'); 

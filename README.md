@@ -11,6 +11,6 @@ A chat-app based on socket.io
 ### Todo:   
     1. Private messages
     2. Rooms
-    3. UI Improvement
+    3. Hosting online
     4. Add mutimedia support
     5. Everything
